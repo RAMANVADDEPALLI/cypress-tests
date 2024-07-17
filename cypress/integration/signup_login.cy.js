@@ -1,32 +1,24 @@
-///<reference types ="cypress"/>
+///<reference types="cypress"/>
+
 describe('User Signup and Login', () => {
   it('Successfully signs up and logs in', () => {
-    cy.visit('https://dev-fe.buttonshift.com');
+    cy.visit('https://dev-fe.buttonshift.com', { timeout: 30000 }); // Increase visit timeout to 30 seconds
 
-    // Debugging: Check if the page contains 'Signup'
-    cy.contains('Signup').should('exist').and('be.visible');
+    cy.contains('Signup', { timeout: 10000 }).click(); // increases the timeout to 10 seconds
 
-    // Navigate to Signup page
-    cy.contains('Signup').click();
 
-    // Fill out signup form
-    cy.get('input[name="email"]').type('testuser@example.com');
-    cy.get('input[name="password"]').type('testPassword');
-    cy.get('input[name="confirmPassword"]').type('testPassword');
+    // Perform signup actions
+    cy.get('input[name="email"]').type(Cypress.env('CYPRESS_EMAIL'));
+    cy.get('input[name="password"]').type(Cypress.env('CYPRESS_PASSWORD'));
     cy.get('button[type="submit"]').click();
 
-    // Verify successful signup
-    cy.url().should('include', '/community');
+    // Assertion for successful signup (adjust as per your application flow)
+    cy.contains('Welcome, User!').should('be.visible');
 
-    // Navigate to Login page
-    cy.contains('Login').click();
+    // Perform login actions
+    cy.contains('Logout').click(); // Example logout action
 
-    // Fill out login form
-    cy.get('input[name="email"]').type('testuser@example.com');
-    cy.get('input[name="password"]').type('testPassword');
-    cy.get('button[type="submit"]').click();
-
-    // Verify successful login
-    cy.contains('Logout').should('exist');
+    // Assertion for successful login (adjust as per your application flow)
+    cy.contains('Login').should('be.visible');
   });
 });

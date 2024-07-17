@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-07-17T12:01:22.086Z",
+    "end": "2024-07-17T12:01:41.480Z",
+    "duration": 19394,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c366e953-4d4e-4e77-9077-9b41717f06a7",
+      "title": "",
+      "fullFile": "cypress/e2e/form_validation.cy.js",
+      "file": "cypress/e2e/form_validation.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a98ed7b2-eddc-4bf1-bc8f-f42b3a3f6d4a",
+          "title": "Form Validations",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Checks all fields are required and validates email and password",
+              "fullTitle": "Form Validations Checks all fields are required and validates email and password",
+              "timedOut": null,
+              "duration": 19314,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://dev-fe.buttonshift.com');\n// Navigate to Signup page\ncy.contains('Signup').click();\n// Try to submit the form without filling it out\ncy.get('button[type=\"submit\"]').click();\ncy.contains('Email is required').should('be.visible');\ncy.contains('Password is required').should('be.visible');\ncy.contains('Confirm Password is required').should('be.visible');\n// Validate email format\ncy.get('input[name=\"email\"]').type('invalidEmail');\ncy.get('button[type=\"submit\"]').click();\ncy.contains('Invalid email format').should('be.visible');\n// Validate password requirements\ncy.get('input[name=\"email\"]').clear().type('testuser@example.com');\ncy.get('input[name=\"password\"]').type('short');\ncy.get('input[name=\"confirmPassword\"]').type('short');\ncy.get('button[type=\"submit\"]').click();\ncy.contains('Password must be at least 8 characters').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Signup' but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Signup' but never did.\n    at Context.eval (webpack://test-automation/./cypress/e2e/form_validation.cy.js:6:9)",
+                "diff": null
+              },
+              "uuid": "275e8e59-3cb9-4467-b6ef-61561434daad",
+              "parentUUID": "a98ed7b2-eddc-4bf1-bc8f-f42b3a3f6d4a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "275e8e59-3cb9-4467-b6ef-61561434daad"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 19314,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

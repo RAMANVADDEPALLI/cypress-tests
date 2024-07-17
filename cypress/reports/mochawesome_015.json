@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2024-07-17T19:07:21.253Z",
+    "end": "2024-07-17T19:07:29.872Z",
+    "duration": 8619,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ac6f9da5-89aa-4a81-bb25-5cd1f2f6d91a",
+      "title": "",
+      "fullFile": "cypress/e2e/signup_login.cy.js",
+      "file": "cypress/e2e/signup_login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "74fc3f68-911a-4aac-ad2e-2fe90fdca7f6",
+          "title": "User Signup and Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Successfully signs up and logs in",
+              "fullTitle": "User Signup and Login Successfully signs up and logs in",
+              "timedOut": null,
+              "duration": 8588,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://dev-fe.buttonshift.com');\n// Navigate to Signup page\ncy.contains('Signup').click();\n// Fill out signup form\ncy.get('input[name=\"email\"]').type('testuser@example.com');\ncy.get('input[name=\"password\"]').type('testPassword');\ncy.get('input[name=\"confirmPassword\"]').type('testPassword');\ncy.get('button[type=\"submit\"]').click();\n// Verify successful signup\ncy.url().should('include', '/community');\n// Navigate to Login page\ncy.contains('Login').click();\n// Fill out login form\ncy.get('input[name=\"email\"]').type('testuser@example.com');\ncy.get('input[name=\"password\"]').type('testPassword');\ncy.get('button[type=\"submit\"]').click();\n// Verify successful login\ncy.contains('Logout').should('exist');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Signup' but never did.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find content: 'Signup' but never did.\n    at Context.eval (webpack://test-automation/./cypress/e2e/signup_login.cy.js:6:9)",
+                "diff": null
+              },
+              "uuid": "22a333e2-3e68-47a6-939e-738bd8285730",
+              "parentUUID": "74fc3f68-911a-4aac-ad2e-2fe90fdca7f6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "22a333e2-3e68-47a6-939e-738bd8285730"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 8588,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
